@@ -62,7 +62,6 @@ services:
     build: .
     command: "celery -E --loglevel=DEBUG -A tasks.celery worker"
     restart: always
-
     links:
       - mongo:mongo
       - redis:redis
@@ -74,7 +73,8 @@ services:
       LOGBIN_API: http://web:5000/api/logbin
       REGIONS_API: http://web:5000/api/regions
       IMAGES_API: http://web:5000/api/images
-
+    volumes:
+      - .:/usr/src/app
 
   redis:
     image: redis:latest
