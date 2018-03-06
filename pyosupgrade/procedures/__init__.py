@@ -423,3 +423,12 @@ class BaseUpgrade(object):
     def logbin_url(self, status):
         self._attributes["logbin_url"] = status
         self._update_job()
+
+    @property
+    def hostname(self):
+        return self._attributes["hostname"]
+
+    @hostname.setter
+    def hostname(self, hostname):
+        self._attributes["hostname"] = hostname
+        self._update_job()

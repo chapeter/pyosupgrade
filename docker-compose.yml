@@ -29,6 +29,7 @@ services:
       - mongo
     volumes:
       - ./src:/src
+      - .:/usr/src/app
     expose:
       - "8000"
     environment:
@@ -83,4 +84,3 @@ services:
     image: mongo:latest
     expose:
       - 27017
-
