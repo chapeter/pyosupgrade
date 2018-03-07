@@ -39,7 +39,7 @@ class IOSManualUpgrade(IOSUpgrade):
             'show ip arp',
             'show spanning-tree',
             'show buffers',
-            'show ip ospf neighbors',
+            'show ip ospf neighbor',
             'show ip route'
         ]
         return commands
