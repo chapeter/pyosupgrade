@@ -12,6 +12,7 @@ from pyosupgrade.procedures.asr1000 import ASR1000Upgrade
 from pyosupgrade.procedures.csr1000 import CSR1000Upgrade
 from pyosupgrade.procedures.healthchecks import IntDescrChecker
 from pyosupgrade.procedures.configuration import BackupRunningConfiguration
+from pyosupgrade.procedures.ios_manual_upgrade import IOSManualUpgrade
 from pyosupgrade.views.logbin import Log, viewer
 from pyosupgrade.views.diffview import diff
 # Since this is not a python package we need to do some work to treat it like
@@ -63,7 +64,9 @@ METHOD_OF_PROCEDURES = {
     "verify-int-desc": {"description": "Checks that all enabled interfaces have descriptions",
                         "procedure": IntDescrChecker},
     "get-running-configuration": {"description": "Captures the running configuration for the devices",
-                                  "procedure": BackupRunningConfiguration}
+                                  "procedure": BackupRunningConfiguration},
+    "IOS-Manual-Upgrade": {"description": "Manual upgrade of IOS router with system checks",
+                           "procedure": IOSManualUpgrade}
 }
 
 

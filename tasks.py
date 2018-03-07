@@ -6,6 +6,7 @@ from pyosupgrade.procedures.asr1000 import ASR1000Upgrade
 from pyosupgrade.procedures.csr1000 import CSR1000Upgrade
 from pyosupgrade.procedures.healthchecks import IntDescrChecker
 from pyosupgrade.procedures.configuration import BackupRunningConfiguration
+from pyosupgrade.procedures.ios_manual_upgrade import IOSManualUpgrade
 #from pyosupgrade.models import CodeUpgradeJob
 
 def make_celery(app):
@@ -34,7 +35,9 @@ METHOD_OF_PROCEDURES = {
     "verify-int-desc": {"description": "Checks that all enabled interfaces have descriptions",
                         "procedure": IntDescrChecker},
     "get-running-configuration": {"description": "Retrieves the running configuration from devices",
-                                  "procedure": BackupRunningConfiguration}
+                                  "procedure": BackupRunningConfiguration},
+    "IOS-Manual-Upgrade": {"description": "Manual upgrade of IOS router with system checks",
+                           "procedure": IOSManualUpgrade}
 
 }
 

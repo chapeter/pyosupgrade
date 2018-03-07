@@ -29,6 +29,7 @@ services:
       - mongo
     volumes:
       - ./src:/src
+      - .:/usr/src/app
     expose:
       - "8000"
     environment:
@@ -61,7 +62,6 @@ services:
     build: .
     command: "celery -E --loglevel=DEBUG -A tasks.celery worker"
     restart: always
-
     links:
       - mongo:mongo
       - redis:redis
@@ -73,7 +73,8 @@ services:
       LOGBIN_API: http://web:5000/api/logbin
       REGIONS_API: http://web:5000/api/regions
       IMAGES_API: http://web:5000/api/images
-
+    volumes:
+      - .:/usr/src/app
 
   redis:
     image: redis:latest
@@ -83,4 +84,3 @@ services:
     image: mongo:latest
     expose:
       - 27017
-
