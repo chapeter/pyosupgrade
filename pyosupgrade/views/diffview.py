@@ -140,3 +140,26 @@ def diff(log1, log2):
         return render_template('diff-view.html', table=table, commands=commands)
     else:
         return render_template('diff-view.html', table=table)
+
+def binary_diff(log1, log2):
+    """
+    returns a True if logs are different
+    returns a False if logs are the same
+    """
+    if '/logbin/embedded/' in log1:
+        log1 =log1.split('/logbin/embedded/')[1]
+    if '/logbin/embedded/' in log2:
+        log2 =log2.split('/logbin/embedded/')[1]
+
+
+    log1doc = mongo.db.logbin.find_one({"id": log1}, {"_id": 0})['text']
+    log2doc = mongo.db.logbin.find_one({"id": log2}, {"_id": 0})['text']
+    log1lines = log1doc.split('\n')
+    log2lines = log2doc.split('\n')
+    print log1lines
+    print log2lines
+
+    if log1lines == log2lines:
+        return False
+    else:
+        return True

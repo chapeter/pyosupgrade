@@ -1,7 +1,7 @@
 # IOS images
 *.bin
 static/ios/*
-
+.idea/*
 # databases
 *.db
 
