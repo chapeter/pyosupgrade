@@ -28,17 +28,15 @@ class IOSManualUpgrade(IOSUpgrade):
     @property
     def verification_commands(self):
         commands = [
-            'show version',
-            'show bootvar',
+            'show version | i Cisco IOS XE',
+            'show bootvar | i BOOT variable',
             'show inventory',
-            'show environment',
             'show run',
             'show cdp neighbors',
             'show int stats',
             'show ip int brief',
             'show ip arp',
             'show spanning-tree',
-            'show buffers',
             'show ip ospf neighbor',
             'show ip route'
         ]
