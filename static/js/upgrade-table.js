@@ -14,6 +14,26 @@ var table = $('#upgrades').DataTable( {
             { "data": "username" },
             { "data": "device" },
             { "data": "status"},
+            { "data": "status_light",
+              "render": function(data, type, row, meta) {
+                    if (row.status_light.includes("info")) {
+                      kls = "info"
+                    } else if (row.status_light.includes("default")) {
+                      kls = "default"
+                    } else if (row.status_light.includes("success")) {
+                      kls = "success"
+                    } else if (row.status_light.includes("info")) {
+                      kls = "info"
+                    } else if (row.status_light.includes("warning")) {
+                      kls = "warning"
+                    } else if (row.status_light.includes("danger")) {
+                      kls = "danger"
+                    }
+                    var light = '<button type="button" class="btn btn-'+ kls + '"></button>'
+                    return light;
+
+              }
+            },
             { "data": "status",
               "render": function(data,type,row,meta) {
                     if (row.status.includes("FAILED")) {
@@ -79,4 +99,3 @@ $('.dataTable').on('click', 'tbody tr', function() {
 setInterval( function () {
     table.ajax.reload();
 }, 10000 );
-

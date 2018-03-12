@@ -5,7 +5,7 @@
 
 <div class="row">
   <div class="col-md-12 text-center">
-   <button onclick="showmodal();" class="btn btn-default btn-lg">Start Staging Code!</button>
+   <button onclick="showmodal();" class="btn btn-default btn-lg">Create New Jobs</button>
   </div>
 </div>
 
@@ -19,6 +19,7 @@
           <th>Initiated by</td>
           <th>Device</th>
           <th>Status</th>
+          <th>Indicator</th>
           <th>Progress</th>
         </tr>
       </thead>
@@ -30,6 +31,7 @@
 {#              <td>{{ job.username }}</td>#}
 {#              <td>{{ job.device }}</td>#}
 {#              <td>{{ job.status }}</td>#}
+{#              <td>{{ job.status_light }}</td>#}
 {#              <td>{{ progress_bar(job) }}</td>#}
 {#            </tr>#}
 {#        {% endfor %}#}
@@ -40,4 +42,3 @@
 </div>
 <script src="/static/js/upgrade-table.js"></script>
 {% endblock %}
-

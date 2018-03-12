@@ -187,6 +187,8 @@ class IOSManualUpgrade(IOSUpgrade):
         self.log("Updated job details: {}".format(self._attributes))
         self.status = "CONNECTING"
         self._pyntc = None
+        self.status_light = "default"
+
 
         try:
             self._pyntc = NTC(host=self.device,
@@ -246,9 +248,11 @@ class IOSManualUpgrade(IOSUpgrade):
             self.status = "WARNING"
 
         print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
+        self.status_light = "info"
+
         for key, value in self._attributes.iteritems():
             if "status" in key:
-                if value.lower() == 'success':
+                if value.lower() == 'success' or value.lower() == 'default' or value.lower() == 'info':
                     print("Success")
                     print(key, value)
                     self.status = "{} Pre-Upgrade SNAPSHOT SUCCESSFUL".format(hostname)
@@ -256,10 +260,10 @@ class IOSManualUpgrade(IOSUpgrade):
                     print("Not")
                     print(key,value)
                     self.status = "{} Pre-Upgrade SNAPSHOT Detects a Problem".format(hostname)
+                    self.status_light = "warning"
                     break
             print("\n")
         print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
-        #self.status = "{} Pre-Upgrade SNAPSHOT SUCCESSFUL".format(hostname)
 
         print('staging thread for {} exiting...'.format(self.device))
 
@@ -343,17 +347,20 @@ class IOSManualUpgrade(IOSUpgrade):
             self.status = "DANGER"
 
 
+
         print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
         for key, value in self._attributes.iteritems():
             if "status" in key:
-                if value.lower() == 'success':
+                if value.lower() == 'success' or value.lower() == 'default' or value.lower() == 'info':
                     print("Success")
                     print(key, value)
-                    self.status = "{} Post Upgrade SNAPSHOT SUCCESSFUL".format(hostname)
+                    self.status = "{} Post Upgrade SNAPSHOT Complete".format(hostname)
+                    self.status_light = "success"
                 else:
                     print("Not")
                     print(key,value)
-                    self.status = "{} Post Upgrade SNAPSHOT Detects a Problem".format(hostname)
+                    self.status = "{} Post Upgrade SNAPSHOT Complete - WARNING".format(hostname)
+                    self.status_light = "danger"
                     break
             print("\n")
         print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
