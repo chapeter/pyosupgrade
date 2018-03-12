@@ -9,11 +9,6 @@ var table = $('#upgrades').DataTable( {
             }
             },
     "columns": [
-            { "data": "id" },
-            { "data": "mop" },
-            { "data": "username" },
-            { "data": "device" },
-            { "data": "status"},
             { "data": "status_light",
               "render": function(data, type, row, meta) {
                     if (row.status_light.includes("info")) {
@@ -34,6 +29,11 @@ var table = $('#upgrades').DataTable( {
 
               }
             },
+            { "data": "id" },
+            { "data": "mop" },
+            { "data": "username" },
+            { "data": "device" },
+            { "data": "status"},
             { "data": "status",
               "render": function(data,type,row,meta) {
                     if (row.status.includes("FAILED")) {
