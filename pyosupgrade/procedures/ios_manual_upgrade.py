@@ -147,16 +147,43 @@ class IOSManualUpgrade(IOSUpgrade):
     def verification_commands(self):
         commands = [
             'show ver | i Cisco | i Version',
+            'show ver',
             'show bootvar | i BOOT variable',
+            'show platform',
+            'show version rp active running',
+            'show version rp standby running',
             'show inventory',
             'show run',
+            'show usb summary'
             'show cdp neighbors',
             'show int stats',
             'show ip int brief',
             'show ip arp',
             'show spanning-tree',
             'show ip ospf neighbor',
-            'show ip route'
+            'show ip route summary',
+            'show ipv6 route summary',
+            'show ipv6 neighbors statistics',
+            'show ipv6 mrib route summary',
+            'show l2tp redundancy',
+            'show ppoe summary',
+            'show sbc global dbe flow-p stati',
+            'show platform software status control-processor brief',
+            'show ip int brief | in ././._',
+            'show ip sla statistics',
+            'show track',
+            'sh run | sec sbc',
+            'sh run | sec sla',
+            'show ip static route 0.0.0.0 0.0.0.0',
+            'show ipv6 static ::/0',
+            'show platform hardware qfp active interface all',
+            'show platform hardware qfp active datapath utilization',
+            'show processes cpu sorted',
+            'show processes cpu platform sorted',
+            'show processes memory sorted',
+            'show processes memory platform sorted',
+            'show ipv6 mroute summary | include OIF',
+            'show vpdn tunnel l2tp summary'
         ]
         return commands
 

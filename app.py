@@ -142,7 +142,10 @@ def jobview(id=None):
             devices = devices.split('\r\n')
             print devices
             for d in devices:
-
+                #port = "22"
+                #if ":" in d:
+                    #port = d.split(":")[1]
+                    #d = d.split(":")[0]
                 # make sure the device name/ip is valid,
                 # this could use better verification e.g ping/etc
                 if len(d) > 5:
@@ -155,6 +158,7 @@ def jobview(id=None):
                             "status": "SUBMITTED",
                             "username": payload['username'],
                             "device": d,
+                            #"port": port,
                             "mop": payload['mop'],
                             "regions_url": REGIONS_API,
                             "images_url": IMAGES_API,
