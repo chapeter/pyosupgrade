@@ -14,6 +14,7 @@ class BaseUpgrade(object):
         self._attributes['job_url'] = job_url
         self._status_log = ""
 
+
     def as_dict(self):
 
         # intialize response
@@ -431,4 +432,13 @@ class BaseUpgrade(object):
     @hostname.setter
     def hostname(self, hostname):
         self._attributes["hostname"] = hostname
+        self._update_job()
+
+    @property
+    def status_light(self):
+        return self._attributes["status_light"]
+
+    @status_light.setter
+    def status_light(self, status_light):
+        self._attributes["status_light"] = status_light
         self._update_job()

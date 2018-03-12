@@ -34,9 +34,12 @@ $(document).on('click', '.panel-heading span.clickable', function(e){
         </button>
 
         <!---operation button--->
-        {% if "STAGING SUCCESSFUL" in job.status  %}
+        {% if "SUCCESSFUL" in job.status  %}
             {% set proceed_cls = 'btn-success' %}
-            {% set txt = "Looks good, lets do it!" %}
+            {% set txt = "Continue" %}
+        {% elif "complete" in job.status.lower() %}
+            {% set proceed_cls = 'btn-secondary disabled' %}
+            {% set txt = "Completed" %}
         {% else %}
             {% set proceed_cls = 'btn-warning' %}
             {% set txt = "PROCEED WITH CAUTION" %}

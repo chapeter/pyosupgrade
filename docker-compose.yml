@@ -21,6 +21,7 @@ services:
     restart: always
     build: .
     command: "python app.py"
+    image: gofast/pyosupgrade-web
     links:
       - redis:redis
       - mongo:mongo
@@ -41,6 +42,7 @@ services:
   flower:
     restart: always
     build: .
+    image: gofast/pyosupgrade-flower
     command: "celery flower -A tasks.celery --basic_auth=admin:password --address=0.0.0.0 --port=5555"
     links:
       - redis:redis
@@ -60,6 +62,7 @@ services:
 
   worker:
     build: .
+    image: gofast/pyosupgrade-worker
     command: "celery -E --loglevel=DEBUG -A tasks.celery worker"
     restart: always
     links:
