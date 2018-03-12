@@ -109,6 +109,9 @@ def diff(log1, log2):
     """
     show_command = request.args.get("show_command", None)
 
+    log1link = log1
+    log2link = log2
+
     # if we receive a URL we only need the id
     if '/logbin/embedded/' in log1:
         log1 =log1.split('/logbin/embedded/')[1]
@@ -137,9 +140,9 @@ def diff(log1, log2):
     else:
         table = diff.make_table(log1lines, log2lines)
     if commands:
-        return render_template('diff-view.html', table=table, commands=commands)
+        return render_template('diff-view.html', table=table, commands=commands, log1="/logbin/embedded/" + log1, log2=log2link)
     else:
-        return render_template('diff-view.html', table=table)
+        return render_template('diff-view.html', table=table, log1="/logbin/embedded/" + log1, log2=log2link)
 
 def binary_diff(log1, log2):
     """
