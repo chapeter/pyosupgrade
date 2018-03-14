@@ -140,7 +140,7 @@ def diff(log1, log2):
     else:
         table = diff.make_table(log1lines, log2lines)
     if commands:
-        return render_template('diff-view.html', table=table, commands=commands, log1="/logbin/embedded/" + log1, log2=log2link)
+        return render_template('diff-view.html', table=table, commands=commands, log1="/logbin/embedded/" + log1, log2="/logbin/embedded/" + log2)
     else:
         return render_template('diff-view.html', table=table, log1="/logbin/embedded/" + log1, log2=log2link)
 

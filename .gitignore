@@ -4,6 +4,7 @@ static/ios/*
 .idea/*
 # databases
 *.db
+mongo/*
 
 # log files
 logs/*

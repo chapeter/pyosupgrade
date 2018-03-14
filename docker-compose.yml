@@ -87,3 +87,5 @@ services:
     image: mongo:latest
     expose:
       - 27017
+    volumes:
+      - ./mongo/data/db:/data/db
