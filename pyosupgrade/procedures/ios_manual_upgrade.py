@@ -26,6 +26,8 @@ class IOSManualUpgrade(IOSUpgrade):
                  ('Post Upgrade Version', self.get_post_version_status, self.post_version_url),
                  ('Pre Upgrade BOOTVAR', self.pre_bootvar_status, self.pre_bootvar_url),
                  ('Post Upgrade BOOTVAR', self.post_bootvar_status, self.post_bootvar_url)
+                 # ('Pre Upgrade Interface Brief', self.pre_int_brief_status, self.pre_int_brief_url),
+                 # ('Post Upgrade Interface Brief', self.post_int_brief_status, self.post_int_brief_url)
                 ]
         return steps
 
@@ -311,6 +313,17 @@ class IOSManualUpgrade(IOSUpgrade):
             self.pre_bootvar_status = "warn"
             self.status = "WARNING"
 
+        # #Get show ip int brief
+        # self.status = "Getting Show IP Interface Brief"
+        # output = device.native.send_command('show ip interface brief')
+        # self.pre_int_brief_status = self.logbin(output)
+        # if len(output) > 0:
+        #     self.pre_int_brief_status = "success"
+        #     self.status = "SUCCESS"
+        # else:
+        #     self.pre_int_brief_status = "warn"
+        #     self.status = "WARNING"
+
         print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
         self.status_light = "info"
 
@@ -330,6 +343,11 @@ class IOSManualUpgrade(IOSUpgrade):
         print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
 
         print('staging thread for {} exiting...'.format(self.device))
+
+
+
+
+
 
     def upgrade_process(self):
         print('starting staging job')
@@ -410,6 +428,16 @@ class IOSManualUpgrade(IOSUpgrade):
             self.post_bootvar_status = "danger"
             self.status = "DANGER"
 
+        # #Get show ip int brief
+        # self.status = "Getting Show IP Interface Brief"
+        # output = device.native.send_command('show ip interface brief')
+        # self.post_int_brief_status = self.logbin(output)
+        # if len(output) > 0:
+        #     self.post_int_brief_status = "success"
+        #     self.status = "SUCCESS"
+        # else:
+        #     self.post_int_brief_status = "warn"
+        #     self.status = "WARNING"
 
 
         print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")

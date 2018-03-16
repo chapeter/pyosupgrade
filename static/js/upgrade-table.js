@@ -11,18 +11,25 @@ var table = $('#upgrades').DataTable( {
     "columns": [
             { "data": "status_light",
               "render": function(data, type, row, meta) {
-                    if (row.status_light.includes("info")) {
-                      kls = "info"
-                    } else if (row.status_light.includes("default")) {
-                      kls = "default"
-                    } else if (row.status_light.includes("success")) {
-                      kls = "success"
-                    } else if (row.status_light.includes("info")) {
-                      kls = "info"
-                    } else if (row.status_light.includes("warning")) {
-                      kls = "warning"
-                    } else if (row.status_light.includes("danger")) {
-                      kls = "danger"
+                    if (typeof row.status_light == 'undefined') {
+                      kls = "secondary"
+
+                    } else {
+                      if (row.status_light.includes("info")) {
+                        kls = "info"
+                      } else if (row.status_light.includes("default")) {
+                        kls = "default"
+                      } else if (row.status_light.includes("success")) {
+                        kls = "success"
+                      } else if (row.status_light.includes("info")) {
+                        kls = "info"
+                      } else if (row.status_light.includes("warning")) {
+                        kls = "warning"
+                      } else if (row.status_light.includes("danger")) {
+                        kls = "danger"
+                      } else {
+                        kls = "default"
+                      }
                     }
                     var light = '<button type="button" class="btn btn-'+ kls + '"></button>'
                     return light;
